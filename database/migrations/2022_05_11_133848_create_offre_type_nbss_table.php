@@ -15,7 +15,9 @@ class CreateOffreTypeNbssTable extends Migration
     {
         Schema::create('offre_type_nbss', function (Blueprint $table) {
             $table->integer('nb');
-            $table->timestamps();
+            $table -> primary(['offre_stages_id', 'type_stages_id']);
+            $table -> foreignId('offre_stages_id') -> constrained() -> onDelete('cascade');
+            $table -> foreignId('type_stages_id') -> constrained() -> onDelete('cascade');
         });
     }
 

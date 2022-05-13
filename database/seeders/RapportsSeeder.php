@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class FailedJobSeeder extends Seeder
+class RapportsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,6 @@ class FailedJobSeeder extends Seeder
      */
     public function run()
     {
-        FailedJob::factory(20)
-        ->count(10)
-        ->create();
+        //
     }
 }

@@ -19,7 +19,6 @@ class CreatePersonnesTable extends Migration
             $table -> string('prenom');
             $table -> string('email');
             $table -> string('cin');
-            $table->timestamps();
         });
     }
 
