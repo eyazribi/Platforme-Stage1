@@ -15,6 +15,7 @@ class CreateOffreTypeNbssTable extends Migration
     {
         Schema::create('offre_type_nbss', function (Blueprint $table) {
             $table->integer('nb');
+            $table->timestamps();
         });
     }
 

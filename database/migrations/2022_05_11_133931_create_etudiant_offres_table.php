@@ -16,6 +16,7 @@ class CreateEtudiantOffresTable extends Migration
         Schema::create('etudiant_offres', function (Blueprint $table) {
             $table->date('date_applied');
             $table->boolean('status');
+            $table->timestamps();
         });
     }
 

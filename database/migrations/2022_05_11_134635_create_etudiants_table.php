@@ -16,6 +16,7 @@ class CreateEtudiantsTable extends Migration
         Schema::create('etudiants', function (Blueprint $table) {
             $table->string('adresse');
             $table->string('tel');
+            $table->timestamps();
         });
     }
 

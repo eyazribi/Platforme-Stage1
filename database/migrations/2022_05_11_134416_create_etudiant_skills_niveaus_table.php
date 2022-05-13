@@ -16,6 +16,7 @@ class CreateEtudiantSkillsNiveausTable extends Migration
         Schema::create('etudiant_skills_niveaus', function (Blueprint $table) {
             $table->string('niveau');
             $table->integer('nb_years');
+            $table->timestamps();
         });
     }
 

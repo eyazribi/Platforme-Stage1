@@ -15,6 +15,7 @@ class CreateEtudiantLangueNiveausTable extends Migration
     {
         Schema::create('etudiant_langue_niveaus', function (Blueprint $table) {
             $table->string('niveau');
+            $table->timestamps();
         
         });
     }
