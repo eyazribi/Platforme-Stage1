@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class AwardSeeder extends Seeder
+class NiveausSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,6 @@ class AwardSeeder extends Seeder
      */
     public function run()
     {
-        Award::factory(20)
-        ->count(10)
-        ->create();
+        //
     }
 }

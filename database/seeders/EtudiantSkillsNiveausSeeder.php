@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class CompanySeeder extends Seeder
+class EtudiantSkillsNiveausSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,6 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        Company::factory(20)
-        ->count(10)
-        ->create();
+        //
     }
 }

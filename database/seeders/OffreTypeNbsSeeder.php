@@ -13,8 +13,6 @@ class OffreTypeNbsSeeder extends Seeder
      */
     public function run()
     {
-        OffreTypeNbs::factory(20)
-        ->count(10)
-        ->create();
+        //
     }
 }

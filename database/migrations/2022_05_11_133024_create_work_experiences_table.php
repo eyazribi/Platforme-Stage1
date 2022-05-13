@@ -21,7 +21,7 @@ class CreateWorkExperiencesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('description');
-            $table->timestamps();
+            $table -> foreignId('personnes_id') -> constrained() -> onDelete('cascade');
         });
     }
 
