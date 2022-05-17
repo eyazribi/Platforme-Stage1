@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function() {
-    return view('welcome');
+    return view('sign-up-company');
+
+    Route::get('/log-in', function () {
+        return view('log-in');
+    })->middleware(['auth'])->name('log-in');
 });

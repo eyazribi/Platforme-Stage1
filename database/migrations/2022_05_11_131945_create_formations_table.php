@@ -19,6 +19,7 @@ class CreateFormationsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('description');
+            $table -> foreignId('personnes_id') -> constrained() -> onDelete('cascade');
         });
     }
 

@@ -16,6 +16,7 @@ class CreateNiveausTable extends Migration
         Schema::create('niveaus', function (Blueprint $table) {
             $table->id();
             $table->string('nom_niveau');
+            $table -> foreignId('departments_id') -> constrained() -> onDelete('cascade');
         });
     }
 

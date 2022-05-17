@@ -16,6 +16,9 @@ class CreateEtudiantSkillsNiveausTable extends Migration
         Schema::create('etudiant_skills_niveaus', function (Blueprint $table) {
             $table->string('niveau');
             $table->integer('nb_years');
+            $table -> primary(['personnes_id', 'skills_id']);
+            $table -> foreignId('personnes_id') -> constrained() -> onDelete('cascade');
+            $table -> foreignId('skills_id') -> constrained() -> onDelete('cascade');
         });
     }
 

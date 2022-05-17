@@ -16,6 +16,9 @@ class CreateEtudiantOffresTable extends Migration
         Schema::create('etudiant_offres', function (Blueprint $table) {
             $table->date('date_applied');
             $table->boolean('status');
+            $table -> primary(['personnes_id', 'offre_stages_id']);
+            $table -> foreignId('personnes_id') -> constrained() -> onDelete('cascade');
+            $table -> foreignId('offre_stages_id') -> constrained() -> onDelete('cascade');
         });
     }
 

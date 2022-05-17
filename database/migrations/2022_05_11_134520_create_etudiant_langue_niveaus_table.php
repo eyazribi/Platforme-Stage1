@@ -15,7 +15,9 @@ class CreateEtudiantLangueNiveausTable extends Migration
     {
         Schema::create('etudiant_langue_niveaus', function (Blueprint $table) {
             $table->string('niveau');
-        
+            $table -> primary(['personnes_id', 'langues_id']);
+            $table -> foreignId('personnes_id') -> constrained() -> onDelete('cascade');
+            $table -> foreignId('langues_id') -> constrained() -> onDelete('cascade');
         });
     }
 
