@@ -19,5 +19,14 @@ class EtudiantController extends Controller
       );
     }
 
-
+    public function show($id) {
+      $val = OffreStage::find($id);
+      $val1 = Company::all();
+      return view('etudiant.show',
+        [
+          'stage' => $val,
+          'company' => $val1
+        ]
+      );
+    }
 }
