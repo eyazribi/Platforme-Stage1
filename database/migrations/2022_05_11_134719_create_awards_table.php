@@ -15,10 +15,11 @@ class CreateAwardsTable extends Migration
     {
         Schema::create('awards', function (Blueprint $table) {
             $table->id();
-           
             $table->string('title');
             $table->date('date_award');
             $table->string('description');
+            $table -> foreignId('etudiants_id') -> constrained() -> onDelete('cascade');
+            $table -> timestamps();
         });
     }
 
