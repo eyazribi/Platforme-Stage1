@@ -15,4 +15,8 @@ class OffreStage extends Model
     public function offresStage() {
       return $this -> hasMany(Offre_stage_nbs::class);
     }
+
+    public function company() {
+      return $this -> belongsTo(Company::class);
+    }
 }

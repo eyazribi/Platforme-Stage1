@@ -20,7 +20,8 @@ class CreateEtudiantsTable extends Migration
             $table -> string('nom');
             $table -> string('prenom');
             $table -> string('email');
-            $table -> string('logo');
+            $table -> string('password');
+            $table -> string('logo') -> nullable();
             $table -> string('cin');
             $table -> foreignId('niveauxes_id') -> constrained() -> onDelete('cascade');
             $table -> timestamps();

@@ -18,8 +18,9 @@ class CreateAdminsTable extends Migration
             $table -> string('nom');
             $table -> string('prenom');
             $table -> string('email');
-            $table -> string('logo');
+            $table -> string('logo') -> nullable();
             $table -> string('cin');
+            $table -> string('password');
             $table->timestamps();
         });
     }
