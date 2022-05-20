@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Etudiant extends Model
 {
     use HasFactory;
+    // public $fillabe = ['nom','prenom', 'email', 'logo', 'password', 'adresse', 'cin', 'telephonne', 'niveauxes_id'];
+    protected $guarded = [];  
     public function formation() {
       return $this -> hasMany(Formation::class);
     }

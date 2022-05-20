@@ -22,12 +22,12 @@
           </a>
             <ul class="list">
                 <li>
-                    <a href="register.html" class="hover"
+                    <a href="/register" class="hover"
                         ><i class="fa-solid fa-user-plus"></i> Register</a
                     >
                 </li>
                 <li>
-                    <a href="" class="hover"
+                    <a href="/login" class="hover"
                         ><i class="fa-solid fa-arrow-right-to-bracket"></i>
                         Login</a
                     >

@@ -16,4 +16,6 @@ use App\Http\Controllers\EtudiantController;
 
 Route::get('/', [EtudiantController::class, 'index']);
 Route::get('/stage/{id}', [EtudiantController::class, 'show']);
-Route::get('//company_propriete/{id}', [EtudiantController::class, 'show_comapny']);
+Route::get('/company_propriete/{id}', [EtudiantController::class, 'show_comapny']);
+Route::get('/register', [EtudiantController::class, 'register']);
+Route::post('/store', [EtudiantController::class, 'store']);
