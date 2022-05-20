@@ -51,7 +51,7 @@
                         </div>
                         <div>
                             <h3>
-                                Job Description
+                                Description de stage
                             </h3>
                             <div class="description">
                                 <p>
