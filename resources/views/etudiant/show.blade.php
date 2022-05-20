@@ -42,7 +42,7 @@
                             <li
                                 class="tags flex"
                             >
-                                <a href="?tag={{$t}}">{{$t}}</a>
+                                <a href="?tags={{$t}}">{{$t}}</a>
                             </li>
                           @endforeach
                         </ul>

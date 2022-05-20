@@ -9,11 +9,10 @@ class EtudiantController extends Controller
 {
     //
     public function index() {
-      $val = OffreStage::all();
       $val1 = Company::all();
       return view('etudiant.index',
         [
-          'stages' => $val,
+          'stages' => OffreStage::filter(request(['tags','search'])) -> get(),
           'company' => $val1
         ]
       );
