@@ -112,10 +112,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Sign Up as a  Company</h1>
-                   <p>Fill out the form below to registre as a Company   Already signed up? Then just <a class="white" href="log-in.html">Log In</a></p> 
+                   <p>Fill out the form below to registre as a Company   Already signed up? Then just <a class="white" href="{{ url('/log-in') }}">Log In</a></p> 
                     <!-- Sign Up Form -->
                     <div class="form-container">
-                        <form id="signUpForm" data-toggle="validator" data-focus="false">
+                        <form id="signUpForm" data-toggle="validator" data-focus="false" action="submit" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <input type="email" class="form-control-input" id="semail" required>
                                 <label class="label-control" for="semail">Email</label>
