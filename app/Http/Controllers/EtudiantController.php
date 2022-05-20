@@ -91,13 +91,23 @@ class EtudiantController extends Controller
       $etud = Etudiant::where('email', 'like', $data['email']) -> first();
       if ($etud) {
         if (Hash::check($data['password'], $etud['password'])) {
-          request() -> session() -> put(['loginId', $etud['id'], 'nom', $etud['nom']]);
+          request() -> session() -> put([
+            'loginId' => $etud['id'],
+             'nom' => $etud['nom']
+           ]);
           return redirect('/');
         } else {
             return back() -> withErrors(['password' => 'le mote de passe est incorrect']);
         }
       } else {
         return back() -> withErrors(['email' => 'l\'email est incorrect']);
+      }
+    }
+
+    public function logout() {
+      if (request()->session() -> has('loginId')) {
+        request()->session()->invalidate();
+        return redirect('/');
       }
     }
 }
