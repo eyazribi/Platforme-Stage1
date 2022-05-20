@@ -6,6 +6,9 @@ use App\Models\Company;
 use App\Models\Etudiant;
 use App\Models\Niveaux;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use session;
+use Hash;
 
 class EtudiantController extends Controller
 {
@@ -61,9 +64,40 @@ class EtudiantController extends Controller
           'niveauxes_id' => 'required'
         ]
       );
-      $data['password'] = bcrypt($data['password']);
-      $etud = Etudiant::create($data);
-      auth() -> login($etud);
-      return redirect('/');
+      $data['password'] = Hash::make($data['password']);
+      $etud = new Etudiant();
+      $etud -> nom = $data['nom'];
+      $etud ->prenom = $data['prenom'];
+      $etud -> email = $data['email'];
+      $etud -> password = $data['password'];
+      $etud -> cin = $data['cin'];
+      $etud -> tel = $data['tel'];
+      $etud -> niveauxes_id = $data['niveauxes_id'];
+      $res = $etud -> save();
+      return redirect('/login');
+    }
+
+    public function login() {
+      return view('etudiant.login');
+    }
+
+    public function enter() {
+      $data = request() -> validate(
+        [
+          'email' => 'required|email',
+          'password' => 'required|min:6'
+        ]
+      );
+      $etud = Etudiant::where('email', 'like', $data['email']) -> first();
+      if ($etud) {
+        if (Hash::check($data['password'], $etud['password'])) {
+          request() -> session() -> put(['loginId', $etud['id'], 'nom', $etud['nom']]);
+          return redirect('/');
+        } else {
+            return back() -> withErrors(['password' => 'le mote de passe est incorrect']);
+        }
+      } else {
+        return back() -> withErrors(['email' => 'l\'email est incorrect']);
+      }
     }
 }

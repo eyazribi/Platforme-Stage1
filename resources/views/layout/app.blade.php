@@ -21,17 +21,35 @@
             <img src="{{asset('/images/stages_h.jpg')}}" class="logo">
           </a>
             <ul class="list">
+              @if(session() -> has('loginId'))
                 <li>
-                    <a href="/register" class="hover"
-                        ><i class="fa-solid fa-user-plus"></i> Register</a
-                    >
+                    <span class="font-bold">welcome {{session('nom')}}</span>
                 </li>
                 <li>
-                    <a href="/login" class="hover"
-                        ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        Login</a
-                    >
+                    <a href="/listings/manage"
+                      ><i class="fa-solid fa-gear"></i>
+                        manage settings</a
+                        >
                 </li>
+                <li>
+                    <form class="inline" method="post" action="/logout" style="margin-left: 10px">
+                      @csrf
+                      <button type="submit"><i class="fa-solid fa-door-closed"></i>logout</button>
+                    </form>
+                </li>
+                @else
+                  <li>
+                      <a href="/register" class="hover"
+                          ><i class="fa-solid fa-user-plus"></i> Register</a
+                      >
+                  </li>
+                  <li>
+                      <a href="/login" class="hover"
+                          ><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                          Login</a
+                      >
+                  </li>
+                  @endif
             </ul>
         </nav>
         <main>

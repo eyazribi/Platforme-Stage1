@@ -19,3 +19,5 @@ Route::get('/stage/{id}', [EtudiantController::class, 'show']);
 Route::get('/company_propriete/{id}', [EtudiantController::class, 'show_comapny']);
 Route::get('/register', [EtudiantController::class, 'register']);
 Route::post('/store', [EtudiantController::class, 'store']);
+Route::get('/login', [EtudiantController::class, 'login']);
+Route::post('/enter', [EtudiantController::class, 'enter']);
