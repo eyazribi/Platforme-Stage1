@@ -26,9 +26,9 @@
                     <span class="font-bold">welcome {{session('nom')}}</span>
                 </li>
                 <li>
-                    <a href="/listings/manage"
+                    <a href="/modefier"
                       ><i class="fa-solid fa-gear"></i>
-                        manage settings</a
+                        modefier le profil</a
                         >
                 </li>
                 <li>

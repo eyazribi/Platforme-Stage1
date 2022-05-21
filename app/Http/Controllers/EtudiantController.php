@@ -110,4 +110,35 @@ class EtudiantController extends Controller
         return redirect('/');
       }
     }
+
+    public function modefier() {
+      $val1 = Company::all();
+      $val2 = Etudiant::find(session('loginId'));
+      return view('etudiant.edit',
+      [
+        'classe' => $val1,
+        'etudiant' => $val2
+      ]);
+    }
+
+    public function update($id) {
+      $val = Etudiant::find($id);
+      $data = request() -> validate(
+        [
+          'nom' => 'required|min:3',
+          'prenom' => 'required|min:3',
+          'email' => 'required|email|unique:etudiants,email,'.$id,
+          'password' => 'required|min:6',
+          'cin' => 'required|numeric|min:10000000|max:99999999|unique:etudiants,cin,'.$id,
+          'tel' => 'required|numeric|min:10000000|max:99999999|unique:etudiants,tel,'.$id,
+          'adresse' => 'required',
+        ]
+      );
+      $data['password'] = Hash::make($data['password']);
+      if (request() -> hasFile('logo')) {
+        $data['logo'] = request() -> file('logo') -> store('etudiants', 'public');
+      }
+      $val -> update($data);
+      return back();
+    }
 }

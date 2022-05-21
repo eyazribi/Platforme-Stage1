@@ -22,3 +22,5 @@ Route::post('/store', [EtudiantController::class, 'store']);
 Route::get('/login', [EtudiantController::class, 'login']) -> middleware('isLogged');
 Route::post('/enter', [EtudiantController::class, 'enter']);
 Route::post('/logout', [EtudiantController::class, 'logout']);
+Route::get('/modefier', [EtudiantController::class, 'modefier']);
+Route::put('/update/{id}', [EtudiantController::class, 'update']);
