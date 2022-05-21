@@ -11,7 +11,7 @@ class CompanyController extends Controller
 {
     //
     public function index() {
-      $val = Etudiant::all();
+      $val = Etudiant::filter(request(['tags', 'search'])) -> get();
       $val1 = Niveaux::all();
       return view('companies.index',
         [
