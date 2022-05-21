@@ -524,6 +524,7 @@ class ComposerStaticInitb820f66670b097ee65a699a1108ced4d
         'App\\Http\\Controllers\\Formation' => __DIR__ . '/../..' . '/app/Http/Controllers/Formation.php',
         'App\\Http\\Controllers\\niveauxController' => __DIR__ . '/../..' . '/app/Http/Controllers/niveauxController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\AuthCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthCheck.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',

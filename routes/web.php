@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
-
+use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,7 @@ use App\Http\Controllers\EtudiantController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// student route
 Route::get('/', [EtudiantController::class, 'index']);
 Route::get('/stage/{id}', [EtudiantController::class, 'show']);
 Route::get('/company_propriete/{id}', [EtudiantController::class, 'show_comapny']);
@@ -24,3 +24,7 @@ Route::post('/enter', [EtudiantController::class, 'enter']);
 Route::post('/logout', [EtudiantController::class, 'logout']);
 Route::get('/modefier', [EtudiantController::class, 'modefier']);
 Route::put('/update/{id}', [EtudiantController::class, 'update']);
+//
+// company route
+Route::get('/company', [CompanyController::class, 'index']);
+//
