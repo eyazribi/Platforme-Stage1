@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Facades\Hash;
 class companyFactory extends Factory
 {
     /**
@@ -23,7 +23,7 @@ class companyFactory extends Factory
            "lien" => $this -> faker -> url(),
            'description' => $this -> faker -> text(255),
            'founded' => $this -> faker -> dateTimeBetween(),
-           'password' => bcrypt($this -> faker -> text(10))
+           'password' => Hash::make($this -> faker -> text(10))
        ];
     }
 }

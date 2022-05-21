@@ -24,7 +24,7 @@ class etudiantFactory extends Factory
             'tel' => $this -> faker -> unique() -> phoneNumber(),
             'adresse' => $this -> faker -> city(),
             'niveauxes_id' => $v,
-            'password' => bcrypt($this -> faker -> text(10))
+            'password' => Hash::make($this -> faker -> text(10))
         ];
     }
 }

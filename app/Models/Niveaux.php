@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class niveaux extends Model
 {
     use HasFactory;
-    public functin etudiant() {
+    public function etudiant() {
       return $this -> hasMany(Etudiant::class);
     }
 

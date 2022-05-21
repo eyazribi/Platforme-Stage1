@@ -19,4 +19,13 @@ class OffreStage extends Model
     public function company() {
       return $this -> belongsTo(Company::class);
     }
+
+    public function scopeFilter($query, array $filter) {
+      if (array_key_exists('tags', $filter)) {
+        $query -> where('tags', 'like', '%'.request('tags').'%');
+      } else if (array_key_exists('search', $filter)) {
+        $query -> where('tags', 'like', '%'.request('search').'%') -> orWhere('job_title', 'like' , '%'.request('search').'%')
+        -> orWhere('description', 'like' , '%'.request('search').'%');
+      }
+    }
 }

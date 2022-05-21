@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EtudiantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-    return view('welcome');
-});
+Route::get('/', [EtudiantController::class, 'index']);
+Route::get('/stage/{id}', [EtudiantController::class, 'show']);
+Route::get('/company_propriete/{id}', [EtudiantController::class, 'show_comapny']);
+Route::get('/register', [EtudiantController::class, 'register'])  -> middleware('isLogged');
+Route::post('/store', [EtudiantController::class, 'store']);
+Route::get('/login', [EtudiantController::class, 'login']) -> middleware('isLogged');
+Route::post('/enter', [EtudiantController::class, 'enter']);
+Route::post('/logout', [EtudiantController::class, 'logout']);
+Route::get('/modefier', [EtudiantController::class, 'modefier']);
+Route::put('/update/{id}', [EtudiantController::class, 'update']);
