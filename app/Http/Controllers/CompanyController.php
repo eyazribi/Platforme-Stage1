@@ -20,4 +20,11 @@ class CompanyController extends Controller
         ]
       );
     }
+
+    public function show_student($id) {
+      $val = Etudiant::find($id);
+      return view('companies.show_student', [
+        'etudiant' => $val
+      ]);
+    }
 }
