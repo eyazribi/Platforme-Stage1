@@ -6,7 +6,7 @@
             <h2 >
                 Log In
             </h2>
-            <p >Log in to post gigs</p>
+            <p >Log in pour trouver un stage</p>
         </header>
 
         <form class="form_create" action="/enter" method="post">

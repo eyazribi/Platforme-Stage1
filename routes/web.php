@@ -27,5 +27,7 @@ Route::put('/update/{id}', [EtudiantController::class, 'update']);
 //
 // company route
 Route::get('/company', [CompanyController::class, 'index']);
-Route::get('/etudiant_properiete/{id}', [CompanyController::class, 'show_student']);
+Route::get('/company/etudiant_properiete/{id}', [CompanyController::class, 'show_student']);
+Route::get('/company/register_company', [CompanyController::class, 'register_company']);
+Route::post('/company/store_company', [CompanyController::class, 'store_company']);
 //

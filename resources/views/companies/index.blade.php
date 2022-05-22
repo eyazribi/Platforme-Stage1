@@ -8,7 +8,7 @@
       src="{{asset('images/etudiant.jpg')}}"/>
   <div>
       <h3>
-          <a href="/etudiant_properiete/{{$stg -> id}}">{{$stg -> nom}}</a>
+          <a href="/company/etudiant_properiete/{{$stg -> id}}">{{$stg -> nom}}</a>
       </h3>
       @php
         $val;

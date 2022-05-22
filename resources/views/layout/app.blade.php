@@ -16,8 +16,26 @@
         <title>stage</title>
     </head>
     <body>
+      <?php
+      $val = url() -> current();
+      $res = explode("/", $val);
+      $val2;
+      $val1;
+      $val3;
+      $val4;
+      if (in_array("company", $res)) {
+        $val1 = "/company/register_company";
+        $val2 = "/company/login_company";
+        $val3 = "/company";
+      } else {
+        $val1 = "/register";
+        $val2 = "/login";
+        $val3 = "/";
+        $val4 = "/modefier";
+      }
+      ?>
         <nav class="nav">
-          <a href="/">
+          <a href=<?php echo $val3?>>
             <img src="{{asset('/images/stages_h.jpg')}}" class="logo">
           </a>
             <ul class="list">
@@ -26,9 +44,9 @@
                     <span class="font-bold">welcome {{session('nom')}}</span>
                 </li>
                 <li>
-                    <a href="/modefier"
+                    <a href=<?php echo $val4?>
                       ><i class="fa-solid fa-gear"></i>
-                        modefier le profil</a
+                        parametre</a
                         >
                 </li>
                 <li>
@@ -39,12 +57,12 @@
                 </li>
                 @else
                   <li>
-                      <a href="/register" class="hover"
+                      <a href=<?php echo $val1?> class="hover"
                           ><i class="fa-solid fa-user-plus"></i> Register</a
                       >
                   </li>
                   <li>
-                      <a href="/login" class="hover"
+                      <a href=<?php echo $val2?> class="hover"
                           ><i class="fa-solid fa-arrow-right-to-bracket"></i>
                           Login</a
                       >

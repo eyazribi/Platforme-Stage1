@@ -104,7 +104,7 @@
             />
             @error('tel')
               <p class="error">
-                {{$message}}
+                le Numero de telephonne devrait contient 8 chiffres
               </p>
             @enderror
           </div>
@@ -123,7 +123,7 @@
               />
               @error('cin')
                 <p class="error">
-                  {{$message}}
+                  le CIN devrait contient 8 chiffres
                 </p>
               @enderror
             </div>
