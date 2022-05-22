@@ -30,4 +30,6 @@ Route::get('/company', [CompanyController::class, 'index']);
 Route::get('/company/etudiant_properiete/{id}', [CompanyController::class, 'show_student']);
 Route::get('/company/register_company', [CompanyController::class, 'register_company']);
 Route::post('/company/store_company', [CompanyController::class, 'store_company']);
+Route::get('company/company_login', [CompanyController::class, 'login_company']);
+Route::post('/company/enter_company', [CompanyController::class, 'enter_company']);
 //

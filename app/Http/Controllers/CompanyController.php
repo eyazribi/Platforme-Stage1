@@ -62,4 +62,28 @@ class CompanyController extends Controller
       $val -> save();
       return redirect('/company/company_login');
     }
+
+    public function login_company() {
+      return view('companies.login');
+    }
+
+    public function enter_company() {
+      $data = request() -> validate(
+        [
+          'email' => 'required|email',
+          'password' => 'required|min:6'
+        ]
+      );
+      $comp = Company::where('email', 'like', $data['email']) -> first();
+      if ($comp) {
+        if (Hash::check($data['password'], $comp['password'])) {
+          request() -> session() -> put(['loginId' => $comp['id'], 'nom' => $comp['nom']]);
+          return redirect('/company');
+        } else {
+            return back() -> withErrors(['password' => 'le mot de passe est incorrect']);
+        }
+      } else {
+        return back() -> withErrors(['email' => 'l\'email est incorrect']);
+      }
+    }
 }

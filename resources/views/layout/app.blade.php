@@ -25,8 +25,9 @@
       $val4;
       if (in_array("company", $res)) {
         $val1 = "/company/register_company";
-        $val2 = "/company/login_company";
+        $val2 = "/company/company_login";
         $val3 = "/company";
+        $val4 = "/company/modefier_company";
       } else {
         $val1 = "/register";
         $val2 = "/login";
