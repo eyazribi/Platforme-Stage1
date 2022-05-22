@@ -32,4 +32,5 @@ Route::get('/company/register_company', [CompanyController::class, 'register_com
 Route::post('/company/store_company', [CompanyController::class, 'store_company']);
 Route::get('company/company_login', [CompanyController::class, 'login_company']);
 Route::post('/company/enter_company', [CompanyController::class, 'enter_company']);
+Route::post('/company/logout', [CompanyController::class, 'logout']);
 //

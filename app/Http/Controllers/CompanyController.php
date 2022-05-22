@@ -86,4 +86,9 @@ class CompanyController extends Controller
         return back() -> withErrors(['email' => 'l\'email est incorrect']);
       }
     }
+
+    public function logout() {
+      request()->session()->invalidate();
+      return redirect('/company');
+    }
 }

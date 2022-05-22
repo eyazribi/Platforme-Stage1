@@ -23,16 +23,19 @@
       $val1;
       $val3;
       $val4;
+      $val5;
       if (in_array("company", $res)) {
         $val1 = "/company/register_company";
         $val2 = "/company/company_login";
         $val3 = "/company";
         $val4 = "/company/modefier_company";
+        $val5 = "/company/logout";
       } else {
         $val1 = "/register";
         $val2 = "/login";
         $val3 = "/";
         $val4 = "/modefier";
+        $val5 = "/logout";
       }
       ?>
         <nav class="nav">
@@ -51,7 +54,7 @@
                         >
                 </li>
                 <li>
-                    <form class="inline" method="post" action="/logout" style="margin-left: 10px">
+                    <form class="inline" method="post" action=<?php echo $val5?> style="margin-left: 10px">
                       @csrf
                       <button type="submit"><i class="fa-solid fa-door-closed"></i>logout</button>
                     </form>
