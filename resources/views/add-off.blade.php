@@ -35,19 +35,27 @@
 
                         <div class="col" style="padding-top:10px;">
         <input name="job_title" class="form-control"></input>
-
+        @error('job_title')
+        {{$message}}
+        @enderror
 
                         </div>
                         <div class="col" style="padding-top:10px;">
-        <input name="job_paid" class="form-control"></input>
-
-
+                        <select name="job_paid">
+                            <option value="1">OUI</option>
+                            <option value="0">Non</option>
+                        </select>
+                        @error('job_paid')
+                        {{
+                            $message
+                        }}
+                        @enderorr
                         </div>
                         </div>
                         <div class="row justify-content-start" style="padding-top:10px;">
 
                         <div class="col" style="padding-top:10px;">
-        <label>Tags</label>
+        <label>Tags(seprated by ",")</label>
 
 
 
@@ -63,13 +71,16 @@
 
                         <div class="col" style="padding-top:10px;">
         <input name="tags" class="form-control"></input>
-
+        @error('tags')
+        {{$message}}
+        @enderror
 
                         </div>
                         <div class="col" style="padding-top:10px;">
-        <input name="description" class="form-control"></input>
-
-
+        <textarea name="description"></textarea>
+        @error('description')
+        {{$message}}
+        @enderror
                         </div>
                         </div>
                         <div class="row justify-content-start" style="padding-top:10px;">
