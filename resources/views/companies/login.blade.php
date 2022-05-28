@@ -6,10 +6,10 @@
             <h2 >
                 Log In
             </h2>
-            <p >Log in pour trouver un stage</p>
+            <p >Log in pour deposer un offre de stage</p>
         </header>
 
-        <form class="form_create" action="/enter" method="post">
+        <form class="form_create" action="/company/enter_company" method="post">
           @csrf
             <div>
                 <label for="email">Email</label>
@@ -52,7 +52,7 @@
             <div>
                 <p>
                     Don't have an account?
-                    <a style="background-color: rgb(239, 59, 45); padding: 3px; color: white" href="/regsiter">Register</a
+                    <a style="background-color: rgb(239, 59, 45); padding: 3px; color: white" href="/company/register_company">Register</a
                     >
                 </p>
             </div>

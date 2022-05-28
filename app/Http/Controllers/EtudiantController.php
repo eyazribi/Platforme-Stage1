@@ -5,6 +5,7 @@ use App\Models\OffreStage;
 use App\Models\Company;
 use App\Models\Etudiant;
 use App\Models\Niveaux;
+use App\Models\Award;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use session;
@@ -93,7 +94,8 @@ class EtudiantController extends Controller
         if (Hash::check($data['password'], $etud['password'])) {
           request() -> session() -> put([
             'loginId' => $etud['id'],
-             'nom' => $etud['nom']
+             'nom' => $etud['nom'],
+             'session_id' => 2
            ]);
           return redirect('/');
         } else {
@@ -114,6 +116,9 @@ class EtudiantController extends Controller
     public function modefier() {
       $val1 = Company::all();
       $val2 = Etudiant::find(session('loginId'));
+      if (!$val2) {
+        return redirect('/');
+      }
       return view('etudiant.edit',
       [
         'classe' => $val1,
@@ -128,12 +133,22 @@ class EtudiantController extends Controller
           'nom' => 'required|min:3',
           'prenom' => 'required|min:3',
           'email' => 'required|email|unique:etudiants,email,'.$id,
-          'password' => 'required|min:6',
           'cin' => 'required|numeric|min:10000000|max:99999999|unique:etudiants,cin,'.$id,
           'tel' => 'required|numeric|min:10000000|max:99999999|unique:etudiants,tel,'.$id,
           'adresse' => 'required',
         ]
       );
+
+      if (request() -> all()['tel'] != null || request() -> all()['description'] != null || request() -> all()['date'] != null) {
+        $data1 = request() -> validate(
+          [
+            'date' => 'required|before_or_after:'.now() -> format('m/d/Y'),
+            'description' => 'required|min:10',
+            'titre' => 'required|min:5'
+          ]
+        );
+      }
+
       $data['password'] = Hash::make($data['password']);
       if (request() -> hasFile('logo')) {
         $data['logo'] = request() -> file('logo') -> store('etudiants', 'public');

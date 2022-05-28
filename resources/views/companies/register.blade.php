@@ -8,11 +8,11 @@
         <p class="mb-4">creer un nouveau compte</p>
     </header>
 
-    <form action="/store" class="form_create" method="post">
+    <form action="/company/store_company" class="form_create" method="post">
         @csrf
         <div class="mb-6">
             <label for="nom">
-                Nom
+                Nom de societe
             </label>
                 <input type="text"
                 name="nom"
@@ -26,26 +26,10 @@
         </div>
 
         <div class="mb-6">
-            <label for="prenom">
-                prenom
+            <label for="email">
+                Email
             </label>
                 <input type="text"
-                name="prenom"
-                value="{{old('prenom')}}"
-            />
-            @error('prenom')
-              <p class="error">
-                {{$message}}
-              </p>
-            @enderror
-        </div>
-
-        <div class="mb-6">
-            <label for="email"
-                >Email</label
-            >
-            <input
-                type="email"
                 name="email"
                 value="{{old('email')}}"
             />
@@ -57,19 +41,35 @@
         </div>
 
         <div class="mb-6">
-            <label
-                for="cin"
+            <label for="lien"
+                >site</label
             >
-                CIN
+            <input
+                type="text"
+                name="lien"
+                value="{{old('lien')}}"
+            />
+            @error('lien')
+              <p class="error">
+                {{$message}}
+              </p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label
+                for="adresse"
+            >
+                address
             </label>
             <input
                 type="text"
-                name="cin"
-                value="{{old('cin')}}"
+                name="adresse"
+                value="{{old('adresse')}}"
             />
-            @error('cin')
+            @error('adresse')
               <p class="error">
-                le CIN devrait contient 8 chiffres
+                {{$message}}
               </p>
             @enderror
         </div>
@@ -87,23 +87,23 @@
             />
             @error('tel')
               <p class="error">
-                le Numero de telephonne devrait contient 8 chiffres
+                le numero de telephonne doit contenir 8 chiffres
               </p>
             @enderror
         </div>
 
         <div class="mb-6">
             <label
-                for="classe"
+                for="founded"
             >
-                classe
+                date de creation
             </label>
-            <select name="niveauxes_id">
-              @foreach($classe as $cls)
-              <option value="{{$cls['id']}}">{{$cls['nom_niveau']}}</option>
-              @endforeach
-            </select>
-            @error('niveauxes_id')
+            <input
+                type="date"
+                name="founded"
+                value="{{old('founded')}}"
+            />
+            @error('founded')
               <p class="error">
                 {{$message}}
               </p>
@@ -111,6 +111,42 @@
         </div>
 
         <div class="mb-6">
+
+            <label
+                for="company_size"
+            >
+                le nombre d'employee
+            </label>
+            <input
+                type="number"
+                name="company_size"
+                value="{{old('company_size')}}"
+            />
+            @error('company_size')
+              <p class="error">
+                {{$message}}
+              </p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label
+                for="description"
+            >
+                description
+            </label>
+            <textarea name="description">
+              {{old('description')}}
+            </textarea>
+            @error('description')
+              <p class="error">
+                {{$message}}
+              </p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+
             <label
                 for="password"
             >
@@ -157,7 +193,7 @@
         <div class="mb-6">
             <p>
                 Already have an account?
-                <a href="/login" style="background-color: rgb(239, 59, 45); padding: 20px; color: white; border-radius: 10px"
+                <a href="/company/login_company" style="background-color: rgb(239, 59, 45); padding: 20px; color: white; border-radius: 10px"
                     >Login</a
                 >
             </p>

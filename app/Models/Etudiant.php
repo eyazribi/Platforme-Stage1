@@ -41,4 +41,18 @@ class Etudiant extends Model
     public function offreStage() {
       return $this -> hasMany(etudiant_offre::class);
     }
+
+    public function scopeFilter($query, array $filter) {
+      if (array_key_exists('tags', $filter)) {
+        $res = Etudiant::join('niveauxes', 'etudiants.niveauxes_id', '=', 'niveauxes.id') -> where('nom_niveau', '=', request('tags')) -> select('niveauxes_id') -> get()[0]['niveauxes_id'];
+        $query -> where('niveauxes_id', '=', $res);
+      } else if (array_key_exists('search', $filter)) {
+        $res = Etudiant::join('niveauxes', 'etudiants.niveauxes_id', '=', 'niveauxes.id') -> where('nom_niveau', '=', request('search')) -> select('niveauxes_id') -> get();
+        if (count($res) > 0) {
+          $query -> where('niveauxes_id', '=', $res[0]['niveauxes_id']);
+        } else {
+          $query -> where('nom', 'like', '%'.request('search').'%') -> orWhere('prenom', 'like', '%'.request('search').'%') -> orWhere('email', 'like', '%'.request('search').'%');
+        }
+      }
+    }
 }

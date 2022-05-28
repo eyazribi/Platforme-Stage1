@@ -5,10 +5,10 @@
 @foreach($etudiant as $stg)
 <div class="flex">
   <img
-      src="{{asset('images/ALERTE-STAGE.jpg')}}"/>
+      src="{{asset('images/etudiant.jpg')}}"/>
   <div>
       <h3>
-          <a href="/stage/{{$stg -> id}}">{{$stg -> nom}}</a>
+          <a href="/company/etudiant_properiete/{{$stg -> id}}">{{$stg -> nom}}</a>
       </h3>
       @php
         $val;

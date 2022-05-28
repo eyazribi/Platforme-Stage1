@@ -16,8 +16,30 @@
         <title>stage</title>
     </head>
     <body>
+      <?php
+      $val = url() -> current();
+      $res = explode("/", $val);
+      $val2;
+      $val1;
+      $val3;
+      $val4;
+      $val5;
+      if (in_array("company", $res)) {
+        $val1 = "/company/register_company";
+        $val2 = "/company/company_login";
+        $val3 = "/company";
+        $val4 = "/company/modefier_company";
+        $val5 = "/company/logout";
+      } else {
+        $val1 = "/register";
+        $val2 = "/login";
+        $val3 = "/";
+        $val4 = "/modefier";
+        $val5 = "/logout";
+      }
+      ?>
         <nav class="nav">
-          <a href="/">
+          <a href=<?php echo $val3?>>
             <img src="{{asset('/images/stages_h.jpg')}}" class="logo">
           </a>
             <ul class="list">
@@ -26,25 +48,25 @@
                     <span class="font-bold">welcome {{session('nom')}}</span>
                 </li>
                 <li>
-                    <a href="/modefier"
+                    <a href=<?php echo $val4?>
                       ><i class="fa-solid fa-gear"></i>
-                        modefier le profil</a
+                        parametre</a
                         >
                 </li>
                 <li>
-                    <form class="inline" method="post" action="/logout" style="margin-left: 10px">
+                    <form class="inline" method="post" action=<?php echo $val5?> style="margin-left: 10px">
                       @csrf
                       <button type="submit"><i class="fa-solid fa-door-closed"></i>logout</button>
                     </form>
                 </li>
                 @else
                   <li>
-                      <a href="/register" class="hover"
+                      <a href=<?php echo $val1?> class="hover"
                           ><i class="fa-solid fa-user-plus"></i> Register</a
                       >
                   </li>
                   <li>
-                      <a href="/login" class="hover"
+                      <a href=<?php echo $val2?> class="hover"
                           ><i class="fa-solid fa-arrow-right-to-bracket"></i>
                           Login</a
                       >

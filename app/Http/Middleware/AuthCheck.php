@@ -16,7 +16,7 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session() -> has('loginId')) {
+        if(Session() -> has('loginId') && Session() -> all()['session_id'] == 2) {
           return redirect('/');
         }
         return $next($request);

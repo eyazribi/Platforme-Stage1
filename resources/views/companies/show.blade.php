@@ -39,15 +39,14 @@
                                     href="{{$company -> lien}}"
                                     class="contact link"
                                     ><i class="fa-solid fa-envelope"></i>
-                                    Contact Employer</a
+                                    visiter</a
                                 >
 
                                 <a
                                     href="{{$company -> email}}"
                                     target="_blank"
                                     class="visiter link"
-                                    ><i class="fa-solid fa-globe"></i> Visit
-                                    Website</a
+                                    ><i class="fa-solid fa-globe"></i> contact societe</a
                                 >
                             </div>
                         </div>

@@ -10,10 +10,11 @@
     <form action="/update/{{$etudiant -> id}}" class="form_create" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
+        <!-- information de contact -->
         <div class="flex column info">
           <div class="header">
             <h1>information de contact</h1>
-            <button class="edit"><i class="fas fa-edit"></i></button>
+            <button class="edit icon"><i class="fas fa-edit"></i></button>
           </div>
         <div class="mb-6">
           <p class="displayed">Email : <span>{{$etudiant -> email}}</span></p>
@@ -104,7 +105,7 @@
             />
             @error('tel')
               <p class="error">
-                {{$message}}
+                le Numero de telephonne devrait contient 8 chiffres
               </p>
             @enderror
           </div>
@@ -123,7 +124,7 @@
               />
               @error('cin')
                 <p class="error">
-                  {{$message}}
+                  le CIN devrait contient 8 chiffres
                 </p>
               @enderror
             </div>
@@ -145,10 +146,74 @@
                   {{$message}}
                 </p>
               @enderror
-              <input type="button" value="save" class="save">
+              <input type="button" value="enregistrer" class="save">
             </div>
           </div>
       </div>
+      <!-- fin information de contact -->
+
+      <!-- information prix -->
+      <div class="flex column award">
+        <div class="header">
+          <h1>information de prix</h1>
+          <button class="icon add"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="hidden">
+      <div class="mb-6">
+        <p class="hidden">titre : <span></span></p>
+        <div class="displayed">
+          <label for="titre"
+              >titre</label
+          >
+          <input
+              type="text"
+              name="titre"
+              value=""
+          />
+          @error('titre')
+            <p class="error">
+              {{$message}}
+            </p>
+          @enderror
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <p class="hidden">date d'attribution: <span></span></p>
+        <div class="displayed">
+          <label for="date"
+              >date d'attribution</label
+          >
+          <input
+              type="date"
+              name="date"
+              value=""
+          />
+          @error('date')
+            <p class="error">
+              {{$message}}
+            </p>
+          @enderror
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <p class="hidden">Description: <span></span></p>
+        <div class="displayed">
+          <label for="description"
+              >description</label
+          >
+          <textarea name="description"></textarea>
+          @error('description')
+            <p class="error">
+              {{$message}}
+            </p>
+          @enderror
+        </div>
+      </div>
+    </div>
+    </div>
+      <!-- fin -->
       <div class="mb-6">
         <div>
           <label for="password"
@@ -177,20 +242,51 @@
     </form>
 </div>
 <script>
+  let count_award = 0;
+  let template = document.querySelector('.award .hidden').innerHTML;
+  function save_award(e) {
+    e.preventDefault();
+    let x = e.target.parentNode.children;
+    for (i = 0; i < x.length - 1; i++) {
+      x[i].children[0].className = 'displayed';
+      x[i].children[0].children[0].innerHTML = x[i].children[1].children[1].value;
+      x[i].children[1].className = 'hidden';
+    }
+    x[x.length - 1].className = 'hidden';
+  }
 
+  function add_award(e) {
+    e.preventDefault();
+    let x = 'save_award' + count_award++;
+    let div1 = document.createElement('div');
+    let div = template + '<button class=' + x + '>enregistrer</button>';
+    div1.innerHTML = div;
+    document.querySelector(".award").appendChild(div1);
+    let save_award_btn = document.querySelector('.' + x);
+    save_award_btn.addEventListener('click', save_award);
+  }
 
   function first() {
     let val = document.querySelectorAll(".info .hidden");
-    let val1 = document.querySelectorAll(".award_hidden .hidden");
+    let val1 = document.querySelector(".award .hidden").children;
     for (i = 0; i < val.length - 1; i++) {
       if (val[i].children.length > 2 ) {
         open();
       }
     }
     for (i = 0; i < val1.length; i++) {
-      if (val1[i].children.length > 2) {
-        console.log(val1[i]);
+      if (val1[i].children[1].children.length > 2) {
+        open1();
       }
+    }
+  }
+
+  function open1() {
+    let val = document.querySelector('.award .hidden').children;
+    document.querySelector('.award').children[1].className = "award";
+    for(i = 0; i < val.length; i++) {
+      val[i].children[0].className = 'hidden';
+      val[i].children[1].className = 'displayed';
     }
   }
 
@@ -228,5 +324,6 @@
   let add_btn = document.querySelector('.add');
   x1.addEventListener('click', save);
   x.addEventListener('click', open);
+  add_btn.addEventListener('click', add_award);
 </script>
 @endsection
