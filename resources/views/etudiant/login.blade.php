@@ -52,7 +52,7 @@
             <div>
                 <p>
                     Don't have an account?
-                    <a style="background-color: rgb(239, 59, 45); padding: 3px; color: white" href="/regsiter">Register</a
+                    <a style="background-color: rgb(239, 59, 45); padding: 3px; color: white" href="/register">Register</a
                     >
                 </p>
             </div>
