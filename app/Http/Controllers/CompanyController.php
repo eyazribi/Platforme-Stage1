@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Etudiant;
 use App\Models\Niveaux;
+use App\Models\OffreStage;
 use session;
 use Hash;
 
@@ -66,9 +67,8 @@ class CompanyController extends Controller
       $data = request() -> validate(
         [
             'job_title' => 'required|min:5',
-            'payment' => 'required|min:1',
+            'job_paid' => 'required',
             'tags' => 'required|min:1',
-            
             'description' => 'required|min:10',
             
         ]
@@ -80,9 +80,9 @@ class CompanyController extends Controller
       $val -> job_paid = $data['job_paid'];
       $val -> tags = $data['tags'];
       $val -> description = $data['description'];
-     
+      $val -> companies_id = session('loginId');
       $val -> save();
-      return redirect('/company/company_login');
+      return redirect('/company');
     }
 
     public function login_company() {
