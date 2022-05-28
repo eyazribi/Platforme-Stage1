@@ -62,6 +62,28 @@ class CompanyController extends Controller
       $val -> save();
       return redirect('/company/company_login');
     }
+    public function store_off() {
+      $data = request() -> validate(
+        [
+            'job_title' => 'required|min:5',
+            'payment' => 'required|min:1',
+            'tags' => 'required|min:1',
+            
+            'description' => 'required|min:10',
+            
+        ]
+      );
+      
+      $val = new OffreStage();
+     
+      $val -> job_title = $data['job_title'];
+      $val -> job_paid = $data['job_paid'];
+      $val -> tags = $data['tags'];
+      $val -> description = $data['description'];
+     
+      $val -> save();
+      return redirect('/company/company_login');
+    }
 
     public function login_company() {
       return view('companies.login');
