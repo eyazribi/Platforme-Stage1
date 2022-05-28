@@ -42,14 +42,12 @@
                         </div>
                         <div class="col" style="padding-top:10px;">
                         <select name="job_paid">
+                        @error('job_paid')
+        {{$message}}
+        @enderror
                             <option value="1">OUI</option>
                             <option value="0">Non</option>
                         </select>
-                        @error('job_paid')
-                        {{
-                            $message
-                        }}
-                        @enderorr
                         </div>
                         </div>
                         <div class="row justify-content-start" style="padding-top:10px;">
