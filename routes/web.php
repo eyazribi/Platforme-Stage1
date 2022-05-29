@@ -15,6 +15,12 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+adeRoute::get('/add-off', function () {
+    return view('/add-off');
+});
+Route::get('/edit-off', function () {
+    return view('/edit-off');
+});
 // student route
 Route::get('/', [EtudiantController::class, 'index']);
 Route::get('/stage/{id}', [EtudiantController::class, 'show']);
@@ -29,14 +35,29 @@ Route::put('/update/{id}', [EtudiantController::class, 'update']) -> middleware(
 //
 // company route
 Route::get('/company', [CompanyController::class, 'index']);
+Route::get('/edit', [EtudiantController::class, 'edit']); // ?!!!
+
 Route::get('/company/etudiant_properiete/{id}', [CompanyController::class, 'show_student']);
 Route::get('/company/register_company', [CompanyController::class, 'register_company']);
+
+
+
 Route::post('/company/store_company', [CompanyController::class, 'store_company']);
+
+Route::post('/company/store_off',[CompanyController::class,'store_off']);
+Route::get('/company/list_off',[CompanyController::class,'list_off']);
+
+
+
 Route::get('company/company_login', [CompanyController::class, 'login_company']);
+
+
 Route::post('/company/enter_company', [CompanyController::class, 'enter_company']);
 Route::post('/company/logout', [CompanyController::class, 'logout']);
 Route::get('/company/poster', [CompanyController::class, 'poster']);
 Route::post('/company/add_intern', [CompanyController::class, 'add_intern']);
+
+
 //
 
 // Admin route
