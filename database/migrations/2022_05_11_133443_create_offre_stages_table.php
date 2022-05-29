@@ -18,8 +18,8 @@ class CreateOffreStagesTable extends Migration
             $table->string('job_title');
             $table->boolean('job_paid');
             $table->longText('description');
-            $table->date('start_date');
-            $table->date('end_date');
+       //     $table->date('start_date');
+         //   $table->date('end_date');
             $table -> string('tags');
             $table -> foreignId('companies_id') -> constrained() -> onDelete('cascade');
             $table->timestamps();

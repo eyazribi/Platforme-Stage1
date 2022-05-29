@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Etudiant;
 use App\Models\Niveaux;
+use App\Models\OffreStage;
 use session;
 use Hash;
 
@@ -62,6 +63,43 @@ class CompanyController extends Controller
       $val -> save();
       return redirect('/company/company_login');
     }
+    
+    
+
+      public function list_off($id) {
+        $val = OffreStage::find($id);
+        $comp = OffreStage::where('companies_id', '=', session('loginId')) -> get();
+  dd($comp);
+        return view('companies.edit_off',
+          [
+            'company' => $comp
+          ]
+        );
+      }
+
+
+
+    public function store_off() {
+      $data = request() -> validate(
+        [
+            'job_title' => 'required|min:5',
+            'job_paid' => 'required',
+            'tags' => 'required|min:1',
+            'description' => 'required|min:10',
+            
+        ]
+      );
+      
+      $val = new OffreStage();
+     
+      $val -> job_title = $data['job_title'];
+      $val -> job_paid = $data['job_paid'];
+      $val -> tags = $data['tags'];
+      $val -> description = $data['description'];
+      $val -> companies_id = session('loginId');
+      $val -> save();
+      return redirect('/company');
+    }
 
     public function login_company() {
       return view('companies.login');
@@ -75,6 +113,7 @@ class CompanyController extends Controller
         ]
       );
       $comp = Company::where('email', 'like', $data['email']) -> first();
+      
       if ($comp) {
         if (Hash::check($data['password'], $comp['password'])) {
           request() -> session() -> put(['loginId' => $comp['id'], 'nom' => $comp['nom']]);
@@ -91,4 +130,35 @@ class CompanyController extends Controller
       request()->session()->invalidate();
       return redirect('/company');
     }
+
+    public function edit($id)
+    {
+        $off = OffreStage::find($id);
+        return view('modifier-off', compact('offre_stages'));  
+    }
+    public function update(Request $request, $id)
+    {
+        // Validation for required fields (and using some regex to validate our numeric value)
+        $request->validate([
+          'job_title' => 'required|min:5',
+          'job_paid' => 'required',
+          'tags' => 'required|min:1',
+          'description' => 'required|min:10',
+        ]); 
+        $offre = OffreStage::find($id);
+        // Getting values from the blade template form
+        $offre->job_title =  $request->get('job_title');
+        $offre->job_paid = $request->get('job_paid');
+        $stock->tags = $request->get('tags');
+        $stock->save();
+ 
+        return redirect('/list-off')->with('success', 'offre  updated.');
+    }   
+    public function destroy($id)
+    {
+        $offre = OffreStage::find($id);
+        $offre->delete(); 
+ 
+        return redirect('/list-off')->with('success', 'offre removed.');  
+    } 
 }
