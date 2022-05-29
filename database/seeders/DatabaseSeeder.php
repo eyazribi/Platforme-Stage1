@@ -7,6 +7,7 @@ use App\Models\Etudiant;
 use App\Models\Company;
 use App\Models\Work_experience;
 use App\Models\Award;
+use App\Models\Formation;
 
 class DatabaseSeeder extends Seeder
 {
@@ -100,6 +101,7 @@ class DatabaseSeeder extends Seeder
       Etudiant::factory() -> count(10) -> create();
       Work_experience::factory() -> count(10) -> create();
       Award::factory()-> count(10) -> create();
+      Formation::factory()-> count(10) -> create();
       // start the filling of the table offre_stages
       DB::table('offre_stages') -> insert(
         [
