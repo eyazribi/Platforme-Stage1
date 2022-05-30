@@ -530,7 +530,6 @@ class ComposerStaticInitb820f66670b097ee65a699a1108ced4d
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AppController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppController.php',
-        'App\\Http\\Controllers\\AwardController' => __DIR__ . '/../..' . '/app/Http/Controllers/AwardController.php',
         'App\\Http\\Controllers\\CompanyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CompanyController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EtudiantController' => __DIR__ . '/../..' . '/app/Http/Controllers/EtudiantController.php',

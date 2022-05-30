@@ -99,9 +99,9 @@ class DatabaseSeeder extends Seeder
       // the end of the filling the table type_stage
       \App\Models\Company::factory() -> count(20) -> create();
       Etudiant::factory() -> count(10) -> create();
-      Work_experience::factory() -> count(10) -> create();
-      Award::factory()-> count(10) -> create();
-      Formation::factory()-> count(10) -> create();
+       Work_experience::factory() -> count(10) -> create();
+       Award::factory()-> count(10) -> create();
+       Formation::factory()-> count(10) -> create();
       // start the filling of the table offre_stages
       DB::table('offre_stages') -> insert(
         [

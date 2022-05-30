@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-       <script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(253282)</script> 
+       <script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(253282)</script>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +13,8 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                  integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link rel="stylesheet" href="{{asset('/css/style.css')}}">
         <title>stage</title>
     </head>
@@ -78,8 +80,11 @@
         <main>
           @yield('content')
         </main>
-        <footer >
+        <footer class="footer" >
             <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
+            @if(session() -> has('loginId') && session() -> all()['session_id'] == 1)
+              <a href="/company/add-off">Ajouter un offre de stage</a>
+            @endif
         </footer>
   </body>
 </html>

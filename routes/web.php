@@ -16,9 +16,7 @@ use App\Http\Controllers\AwardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-adeRoute::get('/add-off', function () {
-    return view('/add-off');
-});
+Route::get('/company/add_off',[CompanyController::class, 'add_off']);
 Route::get('/edit-off', function () {
     return view('/edit-off');
 });

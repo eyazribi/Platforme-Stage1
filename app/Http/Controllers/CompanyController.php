@@ -7,8 +7,10 @@ use App\Models\Company;
 use App\Models\Etudiant;
 use App\Models\Niveaux;
 use App\Models\OffreStage;
+use App\Models\Type_stage;
 use session;
 use Hash;
+use DB;
 
 class CompanyController extends Controller
 {
@@ -63,8 +65,8 @@ class CompanyController extends Controller
       $val -> save();
       return redirect('/company/company_login');
     }
-    
-    
+
+
 
       public function list_off($id) {
         $val = OffreStage::find($id);
@@ -86,18 +88,31 @@ class CompanyController extends Controller
             'job_paid' => 'required',
             'tags' => 'required|min:1',
             'description' => 'required|min:10',
-            
+
         ]
       );
-      
+
       $val = new OffreStage();
-     
+
       $val -> job_title = $data['job_title'];
       $val -> job_paid = $data['job_paid'];
       $val -> tags = $data['tags'];
       $val -> description = $data['description'];
       $val -> companies_id = session('loginId');
       $val -> save();
+      $h = OffreStage::all();
+      $x = count($h);
+      $id_offre_stage = $h[$x - 1]['id'];
+      $all_type_stage = Type_stage::all();
+      for ($i= 0; $i < count($all_type_stage); $i++) {
+        DB::table('offre_type_nbss') -> insert(
+          [
+            'offre_stages_id' => $id_offre_stage,
+            'type_stages_id' => $all_type_stage[$i]['id'],
+            'nb' => request() -> all()['stage'.$all_type_stage[$i]['id']]
+          ]
+        );
+      }
       return redirect('/company');
     }
 
@@ -113,10 +128,15 @@ class CompanyController extends Controller
         ]
       );
       $comp = Company::where('email', 'like', $data['email']) -> first();
-      
+
       if ($comp) {
         if (Hash::check($data['password'], $comp['password'])) {
-          request() -> session() -> put(['loginId' => $comp['id'], 'nom' => $comp['nom']]);
+          request() -> session() -> put([
+            'loginId' => $comp['id'],
+             'nom' => $comp['nom'],
+             'session_id' => 1
+           ]
+           );
           return redirect('/company');
         } else {
             return back() -> withErrors(['password' => 'le mot de passe est incorrect']);
@@ -134,7 +154,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $off = OffreStage::find($id);
-        return view('modifier-off', compact('offre_stages'));  
+        return view('modifier-off', compact('offre_stages'));
     }
     public function update(Request $request, $id)
     {
@@ -144,21 +164,29 @@ class CompanyController extends Controller
           'job_paid' => 'required',
           'tags' => 'required|min:1',
           'description' => 'required|min:10',
-        ]); 
+        ]);
         $offre = OffreStage::find($id);
         // Getting values from the blade template form
         $offre->job_title =  $request->get('job_title');
         $offre->job_paid = $request->get('job_paid');
         $stock->tags = $request->get('tags');
         $stock->save();
- 
+
         return redirect('/list-off')->with('success', 'offre  updated.');
-    }   
+    }
     public function destroy($id)
     {
         $offre = OffreStage::find($id);
-        $offre->delete(); 
- 
-        return redirect('/list-off')->with('success', 'offre removed.');  
-    } 
+        $offre->delete();
+
+        return redirect('/list-off')->with('success', 'offre removed.');
+    }
+
+    public function add_off() {
+      $val = Type_stage::all();
+      return view('add-off',
+      [
+        'stages' => $val
+      ]);
+    }
 }

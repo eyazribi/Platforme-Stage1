@@ -1,13 +1,6 @@
 @extends('layout.app')
 @section('content')
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-          <div class="container body-content">
-        
-
-
-<form action="/company/store_off" class="form_create" method="post">
+<form action="/company/store_off" class="form_create" method="post" style="width: 100%">
     @csrf
         <div class="container">
 
@@ -26,9 +19,6 @@
                         </div>
                         <div class="col" style="padding-top:10px;">
         <label>Payment </label>
-
-
-
                         </div>
                         </div>
                         <div class="row justify-content-start" style="padding-top:10px;">
@@ -64,7 +54,6 @@
 
 
                         </div>
-                        </div>
                         <div class="row justify-content-start" style="padding-top:10px;">
 
                         <div class="col" style="padding-top:10px;">
@@ -80,6 +69,12 @@
         {{$message}}
         @enderror
                         </div>
+                        </div>
+                        <div class="row" style="padding-top:10px;">
+                          @foreach($stages as $stg)
+                            <p>le nombre d'etudiant pour le {{$stg -> nom_stage}}</p>
+                            <input type="number" name="stage<?php echo $stg->id?>" min="0" required> 
+                          @endforeach
                         </div>
                         <div class="row justify-content-start" style="padding-top:10px;">
 
