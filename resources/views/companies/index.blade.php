@@ -1,7 +1,15 @@
 @extends('layout.app')
 @section('content')
-<div class="grid">
 @include('partials._search')<p></p>
+<div class="admin_grid">
+  <div class="config">
+    Societe:
+    <ul>
+      <a href="/company"><li>liste des etudiants</li></a>
+      <a href="/company/liste_offre"><li>liste des offres</li></a>
+    </ul>
+  </div>
+  <div class="grid">
 @foreach($etudiant as $stg)
 <div class="flex">
   <img
@@ -31,5 +39,6 @@
   </div>
 </div>
 @endforeach
+</div>
 </div>
 @endsection

@@ -79,8 +79,6 @@ class CompanyController extends Controller
         );
       }
 
-
-
     public function store_off() {
       $data = request() -> validate(
         [
@@ -188,5 +186,21 @@ class CompanyController extends Controller
       [
         'stages' => $val
       ]);
+    }
+
+    public function liste() {
+      if(session() -> has('loginId') && session() -> all()['session_id'] == 1) {
+        $val = DB::table('companies') -> join('offre_stages', 'offre_stages.companies_id', 'companies.id')
+         -> join('offre_type_nbss', 'offre_type_nbss.offre_stages_id', 'offre_stages.id')
+          -> join('type_stages', 'type_stages.id', 'offre_type_nbss.type_stages_id') ->
+          where('companies.id', '=', session('loginId')) -> get();
+         return view('companies.liste_offre',
+       [
+         'liste' => $val
+       ]
+       );
+      } else {
+        return redirect('/comapany');
+      }
     }
 }

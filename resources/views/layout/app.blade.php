@@ -83,7 +83,7 @@
         <footer class="footer" >
             <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
             @if(session() -> has('loginId') && session() -> all()['session_id'] == 1)
-              <a href="/company/add-off">Ajouter un offre de stage</a>
+              <a href="/company/add_off">Ajouter un offre de stage</a>
             @endif
         </footer>
   </body>

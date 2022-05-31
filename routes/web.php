@@ -38,13 +38,11 @@ Route::get('/edit', [EtudiantController::class, 'edit']); // ?!!!
 
 Route::get('/company/etudiant_properiete/{id}', [CompanyController::class, 'show_student']);
 Route::get('/company/register_company', [CompanyController::class, 'register_company']);
-
-
-
+Route::get('/company/liste_offre', [CompanyController::class, 'liste']);
 Route::post('/company/store_company', [CompanyController::class, 'store_company']);
 
 Route::post('/company/store_off',[CompanyController::class,'store_off']);
-Route::get('/company/list_off',[CompanyController::class,'list_off']);
+Route::get('/company/list_off/{id}',[CompanyController::class,'list_off']);
 
 
 

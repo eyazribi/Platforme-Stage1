@@ -12,10 +12,9 @@
           <a href="/stage/{{$stg -> id}}">{{$stg -> job_paid}}</a>
           <a href="/stage/{{$stg -> id}}">{{$stg -> description}}</a>
           <a href="/stage/{{$stg -> id}}">{{$stg -> tags}}</a>
-          
       </h3>
-      
-     
+
+
   </div>
 </div>
 </div>
