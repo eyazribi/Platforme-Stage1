@@ -13,8 +13,13 @@
                         />
 
                         <h3 class="">{{$etudiant -> nom}} {{$etudiant -> prenom}}</h3>
-                        <div class="company">
-                        </div>
+                          <ul class="flex">
+                              <li
+                                  class="tags flex"
+                              >
+                              {{$etudiant -> nom_niveau}}
+                              </li>
+                          </ul>
                         <div class="location">
                             <i class="fa-solid fa-location-dot"></i> {{$etudiant -> adresse}}
                         </div>
@@ -24,11 +29,10 @@
                                   Le numero de l'etudiant: {{$etudiant -> tel}}
                                 </p>
                                 <a
-                                    href="{{$etudiant -> email}}"
+                                    href="mailto:{{$etudiant -> email}}"
                                     target="_blank"
                                     class="visiter link"
                                     ><i class="fa-solid fa-globe"></i> contact etudiant</a>
-                                >
                             </div>
                         </div>
                     </div>

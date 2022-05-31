@@ -27,7 +27,8 @@ class CompanyController extends Controller
     }
 
     public function show_student($id) {
-      $val = Etudiant::find($id);
+      $val = Etudiant::join('niveauxes', 'niveauxes.id','=','etudiants.niveauxes_id') ->
+      where('etudiants.id', '=', $id) -> first();
       return view('companies.show_student', [
         'etudiant' => $val
       ]);

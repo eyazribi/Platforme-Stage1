@@ -69,7 +69,8 @@ class EtudiantController extends Controller
           'password' => 'required|min:6|confirmed',
           'cin' => 'required|numeric|min:10000000|max:99999999|unique:etudiants,cin',
           'tel' => 'required|numeric|min:10000000|max:99999999|unique:etudiants,tel',
-          'niveauxes_id' => 'required'
+          'niveauxes_id' => 'required',
+          'adresse' => 'required|min:3'
         ]
       );
       $data['password'] = Hash::make($data['password']);
@@ -81,6 +82,7 @@ class EtudiantController extends Controller
       $etud -> cin = $data['cin'];
       $etud -> tel = $data['tel'];
       $etud -> niveauxes_id = $data['niveauxes_id'];
+      $etud -> adresse = $data['adresse'];
       $res = $etud -> save();
       return redirect('/login');
     }

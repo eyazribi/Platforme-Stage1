@@ -94,6 +94,24 @@
 
         <div class="mb-6">
             <label
+                for="tel"
+            >
+            adresse
+            </label>
+            <input
+                type="text"
+                name="adresse"
+                value="{{old('adresse')}}"
+            />
+            @error('adresse')
+              <p class="error">
+                {{$message}}
+              </p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label
                 for="classe"
             >
                 classe
