@@ -203,4 +203,15 @@ class CompanyController extends Controller
         return redirect('/comapany');
       }
     }
+
+    public function affiche_detail() {
+      $val = DB::table('companies') -> join('offre_stages', 'offre_stages.companies_id', 'companies.id')
+       -> join('offre_type_nbss', 'offre_type_nbss.offre_stages_id', 'offre_stages.id')
+        -> join('type_stages', 'type_stages.id', 'offre_type_nbss.type_stages_id') ->
+        where('companies.id', '=', session('loginId')) -> get();
+      return view('companies.affiche_detail_offre',
+    [
+      'liste' => $val
+    ]);
+    }
 }

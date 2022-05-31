@@ -1,22 +1,13 @@
 @extends('layout.app')
 @section('content')
-@include('partials._search')<p></p>
-<div >
-  <div class="config" style="width: 200px">
-    Societe:
-    <ul>
-      <a href="/company"><li>liste des etudiants</li></a>
-      <a href="/company/liste_offre"><li>liste des offres</li></a>
-    </ul>
-  </div>
-  <p></p>
-  <div style="margin-bottom:20px">
+<a href="/company/liste_offre" class="back"><i class="fa-solid fa-arrow-left"></i> Back
+</a>
+  <div>
     <table border="1px" width="900px">
       <tr>
         <td>nom de l'offre</td>
         <td>payant</td>
         <td>Competence</td>
-        <td>?</td>
       </tr>
       <tr>
       <td>{{$liste[0] -> job_title}}</td>
@@ -34,11 +25,21 @@
         </li>
       @endforeach
     </td>
-    <td>
-      <a href="">Modefier</a> | supprimer | <a href="/comapny/affiche_detail_offre/{{$liste[0] -> id}}">afficher</a>
-    </td>
   </tr>
     </table>
+
+    <table border="1px" width="900px" style="margin-top: 20px">
+      <tr>
+        <td>le type de stage</td>
+        <td>le nombre des etudiant demandees</td>
+      </tr>
+      @foreach($liste as $ls)
+      <tr>
+      <td>{{$ls -> nom_stage}}</td>
+      <td>{{$ls -> nb}}</td>
+    </tr>
+    @endforeach
+    </table>
+
   </div>
-</div>
 @endsection
