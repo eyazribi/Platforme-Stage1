@@ -28,12 +28,16 @@ class EtudiantController extends Controller
     public function show($id) {
       $val = OffreStage::find($id);
       $val1 = Company::all();
-      $val2 = DB::table('offre_type_nbss') -> join('type_stages', 'offre_type_nbss.type_stages_id', 'type_stages.id') -> get();
+      $val2 = DB::table('offre_type_nbss') -> join('type_stages', 'offre_type_nbss.type_stages_id', 'type_stages.id')
+       -> where('offre_type_nbss.offre_stages_id','=', $id) -> get();
+       $val3 = DB::table('etudiant_offres') -> where('etudiants_id', '=', session() -> all()['loginId']) ->
+       where('offre_stages_id', '=', $id) -> get();
       return view('etudiant.show',
         [
           'stage' => $val,
           'company' => $val1,
-          'stage_type' => $val2
+          'stage_type' => $val2,
+          'bool' => $val3
         ]
       );
     }
