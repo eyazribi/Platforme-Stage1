@@ -54,6 +54,8 @@ Route::post('/company/logout', [CompanyController::class, 'logout']);
 Route::get('/company/poster', [CompanyController::class, 'poster']);
 Route::post('/company/add_intern', [CompanyController::class, 'add_intern']);
 Route::get('/comapny/affiche_detail_offre/{id}', [CompanyController::class, 'affiche_detail']);
+Route::get('/company/update_detail_offre/{id}', [CompanyController::class, 'update_detail']);
+Route::put('/company/update_offre/{id}', [CompanyController::class, 'update_offre']);
 
 //
 

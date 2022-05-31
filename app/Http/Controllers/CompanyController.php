@@ -214,4 +214,49 @@ class CompanyController extends Controller
       'liste' => $val
     ]);
     }
+
+    public function update_detail($id) {
+        $val = DB::table('offre_stages')
+         -> join('offre_type_nbss', 'offre_type_nbss.offre_stages_id', 'offre_stages.id')
+          -> join('type_stages', 'type_stages.id', 'offre_type_nbss.type_stages_id') ->
+          where('offre_stages.id', '=', $id) -> get();
+      return view('companies.update_detail_offre',
+      [
+        'liste' => $val
+      ]
+    );
+    }
+
+    public function update_offre($id) {
+      $data = request() -> validate([
+        'job_title' => 'required|min:5',
+        'job_paid' => 'required',
+        'tags' => 'required|min:1',
+        'description' => 'required|min:10',
+      ]);
+
+      $val = DB::table('offre_stages') ->
+        where('offre_stages.id', '=', $id) -> update(
+          [
+            'offre_stages.job_title' => $data['job_title'],
+            'offre_stages.job_paid' => $data['job_paid'],
+            'offre_stages.tags' => $data['tags'],
+            'offre_stages.description' => $data['description']
+          ]
+        );
+
+        $val1 = DB::table('offre_type_nbss') -> where('offre_stages_id', '=', $id) -> get();
+        for($i = 0; $i < count($val1); $i++) {
+          DB::table('offre_type_nbss') -> where('offre_stages_id', '=', $id)
+          -> where('type_stages_id', '=' , $val1[$i] -> type_stages_id)
+          -> update(['nb' => request() -> all()['stage'.$val1[$i] -> type_stages_id]]);
+        }
+      return redirect('/company/liste_offre');
+    }
+
+    /*
+    -> update(['nb' => request() -> all()['stage'.$val1[$i] -> type_stages_id]])
+    ->
+   where('type_stages_id', '=', $val1 -> get()[$i]['type_stages_id']);
+    */
 }
