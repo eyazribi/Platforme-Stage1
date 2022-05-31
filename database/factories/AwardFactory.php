@@ -16,8 +16,8 @@ class AwardFactory extends Factory
         return [
             'title' => $this -> faker -> title,
             'date_award' => $this -> faker -> dateTime,
-            'description' => $this -> faker -> text, 
-            'etudiants_id' => $this -> faker -> numberBetween(0, 100),
+            'description' => $this -> faker -> text,
+            'etudiants_id' => $this -> faker -> numberBetween(1, 10),
 
         ];
     }

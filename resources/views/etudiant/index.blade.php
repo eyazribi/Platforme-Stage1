@@ -3,7 +3,7 @@
 <div class="grid">
 @include('partials._search')<p></p>
 @foreach($stages as $stg)
-<div class="flex">
+<div  class="flex">
   <img
       src="{{asset('images/ALERTE-STAGE.jpg')}}"/>
   <div>
@@ -34,7 +34,6 @@
           <i class="fa-solid fa-location-dot"></i> <?php echo $val1?>
       </div>
   </div>
-</div>
 </div>
 @endforeach
 </div>

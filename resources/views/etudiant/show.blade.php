@@ -57,12 +57,19 @@
                                 <p>
                                   {{$stage -> description}}
                                 </p>
+                                <div>
+                                  @foreach($stage_type as $a)
+                                  {{$a -> nom_stage}}: {{$a -> nb}}
+                                  <br>
+                                  @endforeach
+                                </div>
+                                <div class="flex" style="gap:10px; justify-content: center; align-items: center">
                                 <a
                                     href="<?php echo $val2?>"
                                     class="contact link"
                                     ><i class="fa-solid fa-envelope"></i>
-                                    Deposer demande 
-                                
+                                    Deposer demande
+
 
                                 <a
                                     href="<?php echo $val3?>"
@@ -71,6 +78,7 @@
                                     ><i class="fa-solid fa-globe"></i> Visit
                                     Website</a
                                 >
+                              </div>
                             </div>
                         </div>
                     </div>

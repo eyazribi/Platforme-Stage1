@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offre_stage_nbs extends Model
+class offre_type_nbs extends Model
 {
     use HasFactory;
     public function offresStage() {

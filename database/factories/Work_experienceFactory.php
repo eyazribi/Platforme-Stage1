@@ -13,15 +13,15 @@ class Work_experienceFactory extends Factory
      */
     public function definition()
     {
-     
+
         return [
             'job_title' => $this -> faker -> title,
             'company' => $this -> faker -> company(),
             'city' => $this -> faker -> city(),
             'start_date' => $this ->faker-> date(),
-            'end_date' => $this ->faker-> date(),   
-            'description' => $this -> faker -> text, 
-            'etudiants_id' => $this -> faker -> numberBetween(0, 100),
+            'end_date' => $this ->faker-> date(),
+            'description' => $this -> faker -> text,
+            'etudiants_id' => $this -> faker -> numberBetween(1, 10),
 
 
         ];

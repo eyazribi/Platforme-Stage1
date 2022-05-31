@@ -9,6 +9,6 @@ class Type_stage extends Model
 {
     use HasFactory;
     public function offresStage() {
-      return $this -> hasMany(Offre_stage_nbs::class);
+      return $this -> hasMany(offre_type_nbss::class);
     }
 }

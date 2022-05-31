@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use session;
 use Hash;
+use  DB;
 
 class EtudiantController extends Controller
 {
@@ -27,10 +28,12 @@ class EtudiantController extends Controller
     public function show($id) {
       $val = OffreStage::find($id);
       $val1 = Company::all();
+      $val2 = DB::table('offre_type_nbss') -> join('type_stages', 'offre_type_nbss.type_stages_id', 'type_stages.id') -> get();
       return view('etudiant.show',
         [
           'stage' => $val,
-          'company' => $val1
+          'company' => $val1,
+          'stage_type' => $val2
         ]
       );
     }

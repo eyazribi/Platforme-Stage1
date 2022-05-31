@@ -186,9 +186,6 @@ h3 {
 	padding-bottom: 0.5rem;
 	border-radius:  0.75rem;
 	width: 500px;
-	position:  absolute;
-	left:  450px;
-	display:  block;
 	background-color: rgb(239, 59, 45);
 }
 
@@ -199,7 +196,7 @@ h3 {
   color: white;
   background-color: black;
   width: 500px;
-  left: 387px;
+  left: auto;
   display: block;
   position: relative;
   margin-bottom: 10px;

@@ -16,9 +16,9 @@ class FormationFactory extends Factory
         return [
             'title' => $this -> faker -> title,
             'start_date' => $this ->faker-> date(),
-            'end_date' => $this ->faker-> date(),   
-            'description' => $this -> faker -> text, 
-            'etudiants_id' => $this -> faker -> numberBetween(0, 100),
+            'end_date' => $this ->faker-> date(),
+            'description' => $this -> faker -> text,
+            'etudiants_id' => $this -> faker -> numberBetween(1, 10),
         ];
     }
 }

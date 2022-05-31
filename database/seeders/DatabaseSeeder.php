@@ -108,10 +108,32 @@ class DatabaseSeeder extends Seeder
           'job_title' => 'senior laravel developer',
           'job_paid' => false,
           'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        //  'start_date' => date('Y-m-d', mktime(0, 0, 0, 6, 1, 2022)),
-         // 'end_date' => date('Y-m-d', mktime(0, 0, 0, 7, 10, 2022)),
           'companies_id' => mt_rand(1, 20),
           'tags' => 'laravel,spring,html'
+        ]
+      );
+
+      DB::table('offre_type_nbss') -> insert(
+        [
+          'nb' => 2,
+          'offre_stages_id' => 1,
+          'type_stages_id' => 1
+        ]
+      );
+
+      DB::table('offre_type_nbss') -> insert(
+        [
+          'nb' => 4,
+          'offre_stages_id' => 1,
+          'type_stages_id' => 2
+        ]
+      );
+
+      DB::table('offre_type_nbss') -> insert(
+        [
+          'nb' => 5,
+          'offre_stages_id' => 1,
+          'type_stages_id' => 3
         ]
       );
       // end the fillig of the table offre_stages
