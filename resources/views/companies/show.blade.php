@@ -35,7 +35,6 @@
                                 <p style="font-weight: bold">
                                   fonde en : {{$company -> founded}}
                                 </p>
-                                <div class="flex" style="gap:10px; justify-content: center; align-items: center">
                                 <a
                                     href="{{$company -> lien}}"
                                     class="contact link"
@@ -44,12 +43,11 @@
                                 >
 
                                 <a
-                                    href="mailto:{{$company -> email}}"
+                                    href="{{$company -> email}}"
                                     target="_blank"
                                     class="visiter link"
                                     ><i class="fa-solid fa-globe"></i> contact societe</a
                                 >
-                                <div>
                             </div>
                         </div>
                     </div>

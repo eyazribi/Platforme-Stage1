@@ -64,23 +64,13 @@
                                   @endforeach
                                 </div>
                                 <div class="flex" style="gap:10px; justify-content: center; align-items: center">
-                                  @if (count($bool) > 0)
-                                  <a
-                                      href=""
-                                      class="contact link"
-                                      aria-disabled="{{count($bool) > 0 ? 'true' : 'false'}}"
-                                      ><i class="fa-solid fa-envelope"></i>
-                                      Deposer demande
-                                    </a>
-                                  @else
                                 <a
-                                    href="/deposer_demande/{{$stage -> id}}"
+                                    href="<?php echo $val2?>"
                                     class="contact link"
-                                    aria-disabled="{{count($bool) > 0 ? 'true' : 'false'}}"
                                     ><i class="fa-solid fa-envelope"></i>
                                     Deposer demande
-                                  </a>
-                                  @endif
+
+
                                 <a
                                     href="<?php echo $val3?>"
                                     target="_blank"

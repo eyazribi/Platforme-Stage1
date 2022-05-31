@@ -5,7 +5,6 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AwardController;
-use App\Http\Controllers\OffreStageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +65,6 @@ Route::get('/admin', [AdminController::class, 'index']);
 Route::delete('/admin/supprimer/{id}', [AdminController::class, 'delete_etudiant']);
 Route::get('/admin/edit_etudiant/{id}', [AdminController::class, 'edit_etudiant']);
 Route::put('/admin/update_etudiant/{id}', [AdminController::class, 'update_etudiant']);
-//awards
 
-// offre srage
-Route::get('/deposer_demande/{id}', [OffreStageController::class, 'demander']);
+
+//awards
