@@ -10,6 +10,9 @@
     </ul>
   </div>
   <p></p>
+  @if(count($liste) == 0)
+    <p>pas d'offre de stage</p>
+  @else
   <div style="margin-bottom:20px">
     <table border="1px" width="900px">
       <tr>
@@ -35,10 +38,11 @@
       @endforeach
     </td>
     <td>
-      <a href="/company/update_detail_offre/{{$liste[0] -> offre_stages_id}}">Modefier</a> | supprimer | <a href="/comapny/affiche_detail_offre/{{$liste[0] -> offre_stages_id}}">afficher</a>
+      <a href="/company/update_detail_offre/{{$liste[0] -> offre_stages_id}}">Modefier</a> | <form action="/company/delte_offre/{{$liste[0] -> offre_stages_id}}">@csrf @method('delete')<input type="submit" value="supprimer"></form> | <a href="/comapny/affiche_detail_offre/{{$liste[0] -> offre_stages_id}}">afficher</a>
     </td>
   </tr>
     </table>
   </div>
+  @endif
 </div>
 @endsection

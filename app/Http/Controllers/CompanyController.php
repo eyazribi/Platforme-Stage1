@@ -254,6 +254,11 @@ class CompanyController extends Controller
       return redirect('/company/liste_offre');
     }
 
+    public function delete_Offre($id) {
+      $val = OffreStage::find($id);
+      $val -> delete();
+      return back();
+    }
     /*
     -> update(['nb' => request() -> all()['stage'.$val1[$i] -> type_stages_id]])
     ->
