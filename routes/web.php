@@ -5,6 +5,7 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AwardController;
+use App\Http\Controllers\OffreStageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,7 @@ Route::put('/admin/update_etudiant/{id}', [AdminController::class, 'update_etudi
 
 
 //awards
+
+
+//
+Route::get('/deposer_demande/{id}', [OffreStageController::class, 'demander']);
