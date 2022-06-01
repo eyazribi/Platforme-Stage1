@@ -7,7 +7,7 @@
     <ul>
       <a href="/company"><li>liste des etudiants</li></a>
       <a href="/company/liste_offre"><li>liste des offres</li></a>
-      <a href="/company/liste_student"><li>des etudiants demendent des stages</li></a>
+      <a href="/company/liste_student"><li>des etudiants demandent des stages</li></a>
     </ul>
   </div>
   <div class="grid">

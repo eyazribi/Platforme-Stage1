@@ -28,9 +28,13 @@ class OffreStageController extends Controller
     public function liste() {
       $val = DB::table('companies') -> join('offre_stages', 'offre_stages.companies_id','=','companies.id') -> where('companies.id','=',session() -> all()['loginId'])
       -> get();
+      $val2 = DB::table('etudiant_offres') -> join('type_stages', 'type_stages.id', '=','etudiant_offres.type_stages_id')
+      -> join('offre_stages', 'offre_stages.id','=', 'etudiant_offres.offre_stages_id')
+      -> join('etudiants', 'etudiants.id', '=', 'etudiant_offres.etudiants_id') -> where('offre_stages.companies_id','=',session() -> all()['loginId']) -> get();
       return view('companies.liste_student_demande',
     [
-      'liste' => $val
+      'offre' => $val,
+      'etudiant' => $val2
     ]);
     }
 }
