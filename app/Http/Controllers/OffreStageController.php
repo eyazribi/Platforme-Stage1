@@ -14,8 +14,9 @@ class OffreStageController extends Controller
         [
           'etudiants_id' => session() -> all()['loginId'],
           'offre_stages_id' => $id,
-          'status' => 0,
-          'date_applied' => now()
+          'status' => -1,
+          'date_applied' => now(),
+          'type_stages_id' => request() -> all()['type_stage']
         ]
       );
       return redirect('/');
@@ -23,4 +24,19 @@ class OffreStageController extends Controller
       return back();
     }
     }
+
+    public function liste() {
+      $val = DB::table('companies') -> join('offre_stages', 'offre_stages.companies_id','=','companies.id') -> where('companies.id','=',session() -> all()['loginId'])
+      -> get();
+      return view('companies.liste_student_demande',
+    [
+      'liste' => $val
+    ]);
+    }
 }
+
+
+/*
+
+-> join('etudiant_offres', 'etudiant_offres.offre_stages_id','=','offre_stages.id')
+*/

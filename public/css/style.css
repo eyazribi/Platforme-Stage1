@@ -319,7 +319,8 @@ header p {
 .config {
 	color: white;
 	background-color: rgb(239,68,68);
-	height: 120px;
+	height: 200px;
+	width: 300px;
 }
 
 ul, ol {

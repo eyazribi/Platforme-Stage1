@@ -19,6 +19,7 @@ class CreateEtudiantOffresTable extends Migration
             $table -> primary(['etudiants_id', 'offre_stages_id']);
             $table -> foreignId('etudiants_id') -> constrained() -> onDelete('cascade');
             $table -> foreignId('offre_stages_id') -> constrained() -> onDelete('cascade');
+            $table -> foreignId('type_stages_id') -> constrained() -> onDelete('cascade');
             $table->timestamps();
         });
     }

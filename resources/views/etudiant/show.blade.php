@@ -72,12 +72,14 @@
                                     Deposer demande
                                   </a>
                                 @else
-                                <a
-                                    href="/deposer_demande/{{$stage -> id}}"
-                                    class="contact link"
-                                    ><i class="fa-solid fa-envelope"></i>
-                                    Deposer demande
-                                  </a>
+                                <form method="post" action="/deposer_demande/{{$stage -> id}}">
+                                  @csrf
+                                <select  name="type_stage">
+                                  @foreach($type_stage as $t)
+                                  <option value="{{$t -> id}}">{{$t -> nom_stage}}</option>
+                                  @endforeach
+                                  <input type="submit" value="deposer un demande">
+                                </select>
                                   @endif
 
                                 <a

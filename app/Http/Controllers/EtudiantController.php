@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Etudiant;
 use App\Models\Niveaux;
 use App\Models\Award;
+use App\Models\Type_stage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use session;
@@ -32,12 +33,14 @@ class EtudiantController extends Controller
       ->where('offre_type_nbss.offre_stages_id', '=', $id) -> get();
       $val3 = DB::table('etudiant_offres') -> where('etudiants_id', '=', session() -> all()['loginId'])
       -> where('offre_stages_id', '=', $id) -> get();
+      $val4 = Type_stage::all();
       return view('etudiant.show',
         [
           'stage' => $val,
           'company' => $val1,
           'stage_type' => $val2,
-          'bool' => $val3
+          'bool' => $val3,
+          'type_stage' => $val4
         ]
       );
     }

@@ -11,4 +11,8 @@ class Type_stage extends Model
     public function offresStage() {
       return $this -> hasMany(offre_type_nbss::class);
     }
+
+    public function etudiant_offre() {
+      return $this -> hasMany(Etudiant_offre::class);
+    }
 }

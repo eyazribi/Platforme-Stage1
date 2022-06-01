@@ -15,4 +15,8 @@ class Etudiant_offre extends Model
     public function offre() {
       return $this -> belongsTo(OffreStage::class);
     }
+
+    public function type_stge() {
+      return $this -> belongsTo(Type_stage::class);
+    }
 }

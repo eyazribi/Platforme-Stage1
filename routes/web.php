@@ -71,4 +71,5 @@ Route::put('/admin/update_etudiant/{id}', [AdminController::class, 'update_etudi
 
 
 //
-Route::get('/deposer_demande/{id}', [OffreStageController::class, 'demander']);
+Route::post('/deposer_demande/{id}', [OffreStageController::class, 'demander']);
+Route::get('/company/liste_student', [OffreStageController::class, 'liste']);
